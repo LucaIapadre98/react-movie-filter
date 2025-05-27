@@ -6,5 +6,5 @@ export default function MoviesCard ({movie}){
                 <div className="card-body">{movie.genere}</div>
             </div>
         </div>
-    );
+    )
 }

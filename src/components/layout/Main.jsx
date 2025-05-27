@@ -1,23 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import movies from "../../data/Movies";
 import MoviesList from "../movies/MoviesList";
+import MoviesFilter from "../movies/MoviesFilter";
 
-export default function Main({movie}){
+export default function Main(){
     const [filter, setFilter] = useState("");
+    const [filteredMovies, setFilteredMovies] = useState(movies);
+
+    useEffect(()=>{
+        const newFilteredMovies = movies.filter(movie =>
+            movie.genere.includes(filter)
+        );
+
+        setFilteredMovies(newFilteredMovies);
+    }, [filter])
     return(
         <main>
             <div className="container">
                 <h1>Movies</h1>
-                <select className="form-select form-select-lg mb-3" aria-label="Default select example">
-                    <option selected>Genere film</option>
-                    <option value="1">Azione</option>
-                    <option value="2">Fantascienza</option>
-                    <option value="3">Giallo</option>
-                    <option value="4">Horror</option>
-                    <option value="5">Romantico</option>
-                    <option value="6">Thriller</option>
-                </select>
-                <MoviesList movies={movies}/>
+                <MoviesFilter 
+                    text={filter}
+                    handleChange={(e) => setFilter(e.target.value)}
+                />
+                <MoviesList movies={filteredMovies}/>
             </div>
         </main>
     )

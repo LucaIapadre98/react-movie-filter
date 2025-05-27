@@ -2,7 +2,7 @@ body{
   background-color: #ece9e9;
 }
 .container .card{
-  border-radius: 5px;
+  border-radius: 10px;
   gap: 1.5rem;
 }
 .container .card .card-header{

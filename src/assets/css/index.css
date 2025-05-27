@@ -1,6 +1,18 @@
 body{
   background-color: #ece9e9;
 }
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container h1{
+  padding-top: 50px;
+  font-size: 60px;
+}
+.container select{
+  padding: 15px;
+}
 .container .card{
   border-radius: 10px;
   gap: 1.5rem;
